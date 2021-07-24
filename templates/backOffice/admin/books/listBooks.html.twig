@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+	<div class="col-md-12">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb breadcrumb-arrow has-gap has-bg">
+				<li class="breadcrumb-item"><a href="{{ path('dashboardAdmin') }}"><i class="material-icons">home</i> Home</a></li>
+				<li class="breadcrumb-item"><a href="javascript:void(0)">Books</a></li>
+				<li class="breadcrumb-item active"><a href="{{ path('listBooks') }}">List Books</a></li>
+			</ol>
+		</nav>
+	</div>
+
+	<div class="col-md-12">
+		<div class="col-8 mx-auto">
+			<div class="ms-panel">
+				<div class="ms-panel-header">
+					<h6>Book List</h6>
+
+					<div class="col-12 text-right p-0">
+						<a href="{{ path('addBook') }}" class="btn btn-primary shadow-none">Add Book</a>
+					</div>
+
+				</div>
+				<div class="ms-panel-body">
+					<div class="table-responsive">
+						<table id="example4" class="table table-striped thead-primary w-100 text-center">
+							<thead>
+							<tr>
+								<th>title</th>
+								<th>Number Examples</th>
+								<th>Author</th>
+								<th>Ean13</th>
+								<th>Action</th>
+
+							</tr>
+							</thead>
+
+							<tbody>
+
+
+							{% for Book in books %}
+
+								<tr>
+									<td>{{ Book.title }}</td>
+									<td>{{ Book.author }}</td>
+									<td>{{ Book.nbExamples }}</td>
+									<td>{{ Book.ean13 }}</td>
+
+									<td>
+										<a href='{{ path('editBook',{'slug':Book.slug})}}'><i class='fas fa-edit text-success'></i></a>
+										<a href='javascript:void(0)' data-toggle="modal" data-target="#modal-1" onclick='deleteAction("{{ path('deleteBook',{'slug':Book.slug}) }}")'><i class='far fa-trash-alt ms-text-danger'></i></a>
+									</td>
+								</tr>
+							{% endfor %}
+
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="modal-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<h3 class="modal-title has-icon ms-icon-round "><i class="flaticon-alert-1 bg-primary text-white"></i>Delete Confirm !</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+
+				<div class="modal-body">
+					<p>Do you really want to delete ?</p>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+					<a href="#" class="btn btn-primary shadow-none" id="linkDelete">Delete</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{%  endblock %}
+
+
+{% block javascripts %}
+
+	<script>
+
+        {% if formEdit|default(null) %}
+            document.getElementById("modalEdit").click();
+        {% endif %}
+
+	</script>
+
+{% endblock %}
+

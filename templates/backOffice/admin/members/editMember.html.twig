@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-arrow has-gap has-bg">
+                <li class="breadcrumb-item"><a href="{{ path('dashboardAdmin') }}"><i class="material-icons">home</i> Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Member</a></li>
+                <li class="breadcrumb-item active"><a href="{{ path('listMembers') }}">Edit Member</a></li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="col-8 mx-auto">
+            <div class="ms-panel ms-panel-fh">
+                <div class="ms-panel-header mb-4">
+                    <h6 class="float-left">Edit Member</h6>
+
+                    {% for  message in app.flashes('success') %}
+                        <div class=" text-success float-right">{{ message }}</div>
+                    {% endfor %}
+
+                    {% for  message in app.flashes('error') %}
+                        <div class=" text-success float-right">{{ message }}</div>
+                    {% endfor %}
+                </div>
+
+
+                <div class="ms-panel-body">
+                    {{ form_start(form) }}
+                    <div class="form-row">
+
+                        <div class="text-danger">{{ form_errors(form.username)}}</div>
+                        <label for="validationCustom29">Name</label>
+                        <div class="input-group">
+                            {{ form_widget(form.username,{'attr':{'class':'form-control','type':'text','id':'validationCustom29'}}) }}
+                        </div>
+
+
+                        <div class="text-danger">{{ form_errors(form.code)}}</div>
+                        <label for="validationCustom29">Code</label>
+                        <div class="input-group">
+                            {{ form_widget(form.code , { 'attr' : {'class':'form-control'} }) }}
+                        </div>
+
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-12 text-right p-0">
+                            <button type="submit" class="btn btn-primary m-0">Edit</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{%  endblock %}
+
+
+{% block javascripts %}
+
+{% endblock %}
+

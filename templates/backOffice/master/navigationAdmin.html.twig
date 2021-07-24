@@ -1,0 +1,46 @@
+<aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
+    <!-- Logo -->
+    <div class="logo-sn bg-white ms-d-block-lg">
+        <a class="pl-0 ml-0 text-center" href="{{ path('dashboardAdmin') }}">
+            <img src="{{ asset('dashAssets/img/logo.png') }}" alt="logo">
+        </a>
+    </div>
+    <!-- Navigation -->
+    <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+
+        <!-- Rents -->
+        <li class="menu-item">
+            <a href="javascript:void(0)" class="has-chevron" data-toggle="collapse" data-target="#Rents" aria-expanded="false" aria-controls="Rents"> <span><i class="fa fa-list fs-16"></i>Dash </span>
+            </a>
+            <ul id="Rents" class="collapse" aria-labelledby="Rents" data-parent="#side-nav-accordion">
+                <li> <a href="{{ path('listRents') }}">Rents</a></li>
+                <li> <a href="{{ path('addRent') }}">Add Rent</a></li>
+            </ul>
+        </li>
+        <!-- /Rents -->
+
+        <!-- Books -->
+        <li class="menu-item">
+            <a href="javascript:void(0)" class="has-chevron" data-toggle="collapse" data-target="#Books" aria-expanded="false" aria-controls="Books"> <span><i class="fa fa-book fs-16"></i>Books </span>
+            </a>
+            <ul id="Books" class="collapse" aria-labelledby="Books" data-parent="#side-nav-accordion">
+                <li> <a href="{{ path('listBooks') }}">Books</a></li>
+                <li> <a href="{{ path('addBook') }}">Add Book</a></li>
+            </ul>
+        </li>
+        <!-- /Books -->
+
+        <!-- Members -->
+        <li class="menu-item">
+            <a href="javascript:void(0)" class="has-chevron" data-toggle="collapse" data-target="#Members" aria-expanded="false" aria-controls="Members"> <span><i class="far fa-user fs-16"></i>Members </span>
+            </a>
+            <ul id="Members" class="collapse" aria-labelledby="Members" data-parent="#side-nav-accordion">
+                <li> <a href="{{ path('listMembers') }}">Members</a></li>
+                <li> <a href="{{ path('addMember') }}">Add Members</a></li>
+            </ul>
+        </li>
+        <!-- /Members -->
+
+
+    </ul>
+</aside>
